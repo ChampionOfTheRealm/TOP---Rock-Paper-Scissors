@@ -5,6 +5,7 @@ let playerWinCount = 0;
 let computerWinCount = 0;
 let tieCount = 0;
 
+//Generates a random choice from "rock, paper or scissors" for the computer
 function getComputerChoice() {
     let random = Math.floor(Math.random() * 100);
     if (random <= 33 && random >= 0) {
@@ -16,6 +17,7 @@ function getComputerChoice() {
     }
 }
 
+//Gets the players choice of either "rock, paper or scissor"
 function getPlayerChoice(choice = prompt("Rock, Paper or Scissors")) {
     choice = choice.toLowerCase()
     if (choice == "rock" || choice == "paper" || choice == "scissors") {
@@ -26,6 +28,7 @@ function getPlayerChoice(choice = prompt("Rock, Paper or Scissors")) {
 
 }
 
+//Game logic which compares the computers choice with the players choice and determines if the player or computer won or a tie and increments respective variable.
 function playGame(playerSelection, computerSelection) {
     playerSelection = getPlayerChoice();
     computerSelection = getComputerChoice();
@@ -71,7 +74,7 @@ function playGame(playerSelection, computerSelection) {
     return;
 }
 
-
+//Asks the player how many rounds for Rock Paper Scissors they would like to play and proceeds to call the game logic said number of times.
 function game(rounds = prompt("How many rounds would you like to play?")) {
     rounds = parseInt(rounds);
     console.log(typeof(rounds));
@@ -85,4 +88,5 @@ function game(rounds = prompt("How many rounds would you like to play?")) {
     }
 }
 
+//Initializes the game on web load
 game();
