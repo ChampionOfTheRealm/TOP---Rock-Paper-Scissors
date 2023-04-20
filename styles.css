@@ -1,0 +1,67 @@
+body {
+    font-family:monospace;
+}
+
+.reset {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reset-button {
+    margin: 20px;
+    font-size: medium;
+    font-weight: 700;
+    font-family:monospace;
+}
+
+.game-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-choices {
+    display: flex;
+    justify-content: center;
+}
+
+#btn1, #btn2, #btn3 {
+    height: 100px;
+    width: 175px;
+    padding: 20px;
+    margin: 20px;
+    font-size: large;
+    font-weight: 700;
+    font-family:monospace;
+}
+
+.results {
+    padding: 20px;
+    border: solid;
+    border-color:blueviolet;
+    border-radius: 5px;
+    width: 600px;
+    height: fit-content;
+}
+
+#results-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results-div {
+    padding:10px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#winner {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    color: red;
+    font-weight: 700;
+    border-style:dashed;
+    padding: 20px;
+}
