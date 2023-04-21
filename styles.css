@@ -1,5 +1,7 @@
 body {
     font-family:monospace;
+    background-color: black;
+    color: white;
 }
 
 .reset {
@@ -16,30 +18,64 @@ body {
 
 .game-div {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.button-choices {
-    display: flex;
     justify-content: center;
+    align-items: center;
+    border: solid;
+    border-style: double;
+    border-color: yellow;
+    border-radius: 30px;
+    border-width: 10px;
+    padding: 50px;
+    margin: 20px;
 }
 
-#btn1, #btn2, #btn3 {
+.player-choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.leftside {
     height: 100px;
     width: 175px;
-    padding: 20px;
-    margin: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
     font-size: large;
     font-weight: 700;
     font-family:monospace;
 }
 
+.computer-choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.rightside {
+    height: 100px;
+    width: 175px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: large;
+    font-weight: 700;
+    font-family:monospace;
+}
+
+.leftside-text, .rightside-text {
+
+    font-size: large;
+    font-weight: 700;
+    font-family:monospace;
+}
+
+
 .results {
     padding: 20px;
     border: solid;
     border-color:blueviolet;
-    border-radius: 5px;
+    border-radius: 30px;
     width: 600px;
     height: fit-content;
 }
@@ -62,6 +98,53 @@ body {
     font-size: 24px;
     color: red;
     font-weight: 700;
-    border-style:dashed;
+    border-style:solid;
+    border-radius: 30px;
     padding: 20px;
+    margin-top: 5px;
+    height: 100px;
+}
+
+.hide {
+    max-height: 0 !important;
+}
+
+.dropdown{
+	border: 0.1em solid black;
+	width: 10em;
+	margin-bottom: 1em;
+}
+
+.dropdown .title{
+	margin: .3em .3em .3em .3em;	
+	width: 100%;
+}
+
+.dropdown .title .fa-angle-right{
+	float: right;
+	margin-right: .7em;
+	transition: transform .3s;
+}
+
+.dropdown .menu{
+	transition: max-height .5s ease-out;
+	max-height: 20em;
+	overflow: hidden;
+}
+
+.dropdown .menu .option{
+	margin: .3em .3em .3em .3em;
+	margin-top: 0.3em;
+}
+
+.dropdown .menu .option:hover{
+	background: rgba(0,0,0,0.2);
+}
+
+.pointerCursor:hover{
+	cursor: pointer;
+}
+
+.rotate-90{
+	transform: rotate(90deg);
 }
