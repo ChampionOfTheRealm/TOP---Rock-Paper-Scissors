@@ -29,7 +29,7 @@ body {
     border-color: yellow;
     border-radius: 30px;
     border-width: 10px;
-    padding: 50px;
+    padding: 0 50px 0 50px;
     margin: 20px;
 }
 
@@ -74,6 +74,11 @@ body {
     font-family:monospace;
 }
 
+#game-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .results {
     padding: 20px;
@@ -82,6 +87,26 @@ body {
     border-radius: 30px;
     width: 600px;
     height: fit-content;
+}
+
+#versus-title {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: 630px;
+    height: 135px;
+    border: solid;
+    border-color: white;
+    border-radius: 30px;
+
+}
+
+.versus-heading {
+    display: flex;
+    font-weight: 700;
+    font-size: 32px;
+    padding: 20px;
+
 }
 
 #results-display {
@@ -107,6 +132,7 @@ body {
     padding: 20px;
     margin-top: 5px;
     height: 100px;
+    width: 550px;
 }
 
 #player-character, #opponent-character {

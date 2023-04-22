@@ -169,16 +169,18 @@ function handleOptionSelected(e){
 	toggleClass(e.target.parentNode, 'hide');			
 
 	const id = e.target.id;
+    const selectedCharacter = e.target.innerText;
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown .title');
 	const icon = document.querySelector('.dropdown .title .fa');
     const playerCharacter = document.querySelector('#player-character');
-
+    const playerVersus = document.querySelector('#player-versus');
 
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
 
     playerCharacter.src = `${id}.png`;
+    playerVersus.innerText = selectedCharacter;
 	
 	//trigger custom event
 	document.querySelector('.dropdown .title').dispatchEvent(new Event('change'));
@@ -196,8 +198,6 @@ function handleOptionSelected(e){
 const dropdownTitle = document.querySelector('.dropdown .title');
 const dropdownOptions = document.querySelectorAll('.dropdown .option');
 
-console.log(dropdownTitle);
-console.log(dropdownOptions);
 //bind listeners to these elements
 dropdownTitle.addEventListener('click', toggleMenuDisplay);
 dropdownOptions.forEach(option => option.addEventListener('click',handleOptionSelected));
@@ -209,7 +209,6 @@ dropdownOptions.forEach(option => option.addEventListener('click',handleOptionSe
 
 /////////////////////////////////// DROP DOWN MENU 2///////////////////////////////////////////////////////
 function toggleClass2(elem,className){
-    console.log("toggleClass2")
 	if (elem.className.indexOf(className) !== -1){
 		elem.className = elem.className.replace(className,'');
 	}
@@ -222,7 +221,6 @@ function toggleClass2(elem,className){
 
 function toggleDisplay2(elem){
 	const curDisplayStyle = elem.style.display;	
-    console.log("toggleDisplay2");
 				
 	if (curDisplayStyle === 'none' || curDisplayStyle === ''){
 		elem.style.display = 'block';
@@ -243,25 +241,28 @@ function toggleMenuDisplay2(e){
 	toggleClass2(menu,'hide2');
 	toggleClass2(icon,'rotate-902');
 
-    console.log("toggleMenuDisplay2");
+ 
 }
 
 function handleOptionSelected2(e){
 	toggleClass2(e.target.parentNode, 'hide2');
-    console.log("handleOptionSelected2");			
+		
 
 	const id = e.target.id;
+    const selectedCharacter2 = e.target.innerText;
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown2 .title2');
 	const icon = document.querySelector('.dropdown2 .title2 .fa2');
     const opponentCharacter = document.querySelector('#opponent-character');
+    const opponentVersus = document.querySelector('#opponent-versus');
 
 
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
-
+    id.too
     opponentCharacter.src = `${id}.png`;
-    console.log(opponentCharacter);
+    opponentVersus.innerText = selectedCharacter2;
+
 	
 	//trigger custom event
 	document.querySelector('.dropdown2 .title2').dispatchEvent(new Event('change'));
@@ -271,7 +272,5 @@ function handleOptionSelected2(e){
 
 const dropdownTitle2 = document.querySelector('.dropdown2 .title2');
 const dropdownOptions2 = document.querySelectorAll('.dropdown2 .option2');
-console.log(dropdownTitle2);
-console.log(dropdownOptions2);
 dropdownTitle2.addEventListener('click', toggleMenuDisplay2);
 dropdownOptions2.forEach(option => option.addEventListener('click',handleOptionSelected2));
