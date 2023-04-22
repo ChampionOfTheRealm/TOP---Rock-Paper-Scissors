@@ -10,53 +10,70 @@
 <body>
     <div class="reset">
         <h1>JavaScript || Rock Paper Scissors</h1>
-        <button class="reset-button">Reset Score</button>
+        
     </div>
-    <div class="game-div">
+    <div class="the-game"></div>
+    <button class="reset-button">Reset Score</button>
+        <div class="game-div">
 
-        <div class='dropdown'>
-		<div class='title pointerCursor'>Select an option <i class="fa fa-angle-right"></i></div>
-		
-		<div class='menu pointerCursor hide'>
-			<div class='option' id='option1'>Option 1</div>
-			<div class='option' id='option2'>Option 2</div>
-			<div class='option' id='option3'>Option 3</div>
-			<div class='option' id='option4'>Option 4</div>
-		</div>
 
-	</div>
+            <div class='dropdown'>
+	    	    <div class='title pointerCursor'>Select Character<i class="fa fa-angle-right"></i></div>
 
-        <div class="player-choices">
-            <text   class="leftside-text">Choose your weapon!</text>
-            <text   class="leftside-text">Player</text>
-            <button class="leftside" id="btn1" value="rock">Rock</button>
-            <button class="leftside" id="btn2" value="paper">Paper</button>
-            <button class="leftside" id="btn3" value="scissors">Scissors</button>
-        </div>
-        <div>
-            <div class="results">   
-                <div id="results-display">
-                    <div class="results-div" id="rounds"></div>
-                    <div class="results-div" id="playerSelection"></div>
-                    <div class="results-div" id="computerSelection"></div>
-                    <div class="results-div" id="result"></div>
-                    <div class="results-div" id="playerWins"></div>
-                    <div class="results-div" id="computerWins"></div>
-                    <div class="results-div" id="ties"></div>
+	    	    <div class='menu pointerCursor hide'>
+	    	    	<div class='option' id='man'>Man</div>
+	    	    	<div class='option' id='spanishinquisition'>The Spanish Inquisition</div>
+	    	    	<div class='option' id='beast'>Beast</div>
+	    	    	<div class='option' id='option4'>Option 4</div>
+	    	    </div>
+                <img id="player-character" src="">
+	        </div>
+
+            <div class="player-choices">
+                <text   class="leftside-text">Choose your weapon!</text>
+                <text   class="leftside-text">Player</text>
+                <button class="leftside" id="btn1" value="rock">Rock</button>
+                <button class="leftside" id="btn2" value="paper">Paper</button>
+                <button class="leftside" id="btn3" value="scissors">Scissors</button>
+            </div>
+            <div>
+                <div class="results">   
+                    <div id="results-display">
+                        <div class="results-div" id="rounds"></div>
+                        <div class="results-div" id="playerSelection"></div>
+                        <div class="results-div" id="computerSelection"></div>
+                        <div class="results-div" id="result"></div>
+                        <div class="results-div" id="playerWins"></div>
+                        <div class="results-div" id="computerWins"></div>
+                        <div class="results-div" id="ties"></div>
+                    </div>
+                </div>
+                <div id="winner">
+                    <div ></div>
                 </div>
             </div>
-            <div id="winner">
-                <div ></div>
+
+            <div class="computer-choices">
+                <text class="rightside-text">Choose your weapon!</text>
+                <text class="rightside-text">Computer</text>
+                <button class="rightside" id="btn1" value="rock">Rock</button>
+                <button class="rightside" id="btn2" value="paper">Paper</button>
+                <button class="rightside" id="btn3" value="scissors">Scissors</button>
             </div>
+
+            <div class='dropdown2'>
+	    	    <div class='title2 pointerCursor2'>Select Character<i class="fa2 fa-angle-right2"></i></div>
+
+	    	    <div class='menu2 pointerCursor2 hide2'>
+	    	    	<div class='option2' id='man'>Man</div>
+	    	    	<div class='option2' id='spanishinquisition'>The Spanish Inquisition</div>
+	    	    	<div class='option2' id='beast'>Beast</div>
+	    	    	<div class='option2' id='option4'>Elf</div>
+	    	    </div>
+                <img id="opponent-character" src="">
+	        </div>
+
         </div>
-        <div class="computer-choices">
-            <text class="rightside-text">Choose your weapon!</text>
-            <text class="rightside-text">Computer</text>
-            <button class="rightside" id="btn1" value="rock">Rock</button>
-            <button class="rightside" id="btn2" value="paper">Paper</button>
-            <button class="rightside" id="btn3" value="scissors">Scissors</button>
-        </div>
-    </div>
     <script src="main.js"></script>
 </body>
 </html>
