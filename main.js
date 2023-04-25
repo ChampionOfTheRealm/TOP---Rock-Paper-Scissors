@@ -17,6 +17,8 @@ const opponentVersus = document.querySelector('#opponent-versus');
 const compBtnRock = document.querySelector("#compBtn1");
 const compBtnPaper = document.querySelector("#compBtn2");
 const compBtnScissors = document.querySelector("#compBtn3");
+const dropDownHeading = document.querySelector(".title");
+const dropDownHeading2 = document.querySelector(".title2");
 
 leftsideButtons.forEach(option => option.addEventListener('click',game));
 document.querySelector('.reset-button').addEventListener('click', resetScore);
@@ -65,7 +67,6 @@ function game(e) {
         playerSelection = playerChoice;
         computerSelection = getComputerChoice();
         let result;
-
         if (playerSelection == computerSelection) {
             tieCount++;
             result = "Tie!";
@@ -96,30 +97,39 @@ function game(e) {
                 result = "Player Wins!";
             }
         }
-
         winner.innerText = result;
         ties.innerText = "Ties: " + tieCount;
         computerWins.innerText = "Computer Wins: " + computerWinCount;
         playerWins.innerText = "Player Wins: " + playerWinCount;
-
         if (computerWinCount == 5) {
-            winner.innerText = "We have a winner! \n The Computer wins with 5 points! \n Better luck next time!";
-            computerWinCount = 0;
-            playerWinCount = 0;
-            tieCount = 0;
-            setTimeout (() => {
+            leftsideButtons.forEach(option => option.removeEventListener('click',game));
+            winner.innerText = "We have a winner! \n The Computer wins with 5 points! \n Better luck next time! \n Resetting Game...";
+            var start = 5;
+            let newInterval = setInterval(function() {
+            winner.innerHTML += " " + start;
+            if (start <= 0){
+                winner.innerHTML = "";
+                clearInterval(newInterval);
                 resetScore();
-            }, 5000);
+            }
+            start--;
+            }, 1000);
+            setTimeout(() => {leftsideButtons.forEach(option => option.addEventListener('click',game));}, 5000);
         } else if (playerWinCount == 5){
-            winner.innerText = "We have a winner! \n The Player wins with 5 points! \n Congratulations!";
-            computerWinCount = 0;
-            playerWinCount = 0;
-            tieCount = 0;
-            setTimeout (() => {
+            leftsideButtons.forEach(option => option.removeEventListener('click',game));
+            winner.innerText = "We have a winner! \n The Player wins with 5 points! \n Congratulations! \n Resetting Game...";
+            var start = 5;
+            let newInterval = setInterval(function() {
+            winner.innerHTML += " " + start
+            if (start <= 0){
+                winner.innerHTML = "";
+                clearInterval(newInterval);
                 resetScore();
-            }, 5000);
+            }
+            start--;
+            }, 1000);
+            setTimeout(() => {leftsideButtons.forEach(option => option.addEventListener('click',game));}, 5000);
         }
-
         return choiceButton;
     }
     
@@ -140,8 +150,10 @@ function resetScore() {
     compBtnRock.classList.remove("btn-highlight");
     compBtnPaper.classList.remove("btn-highlight");
     compBtnScissors.classList.remove("btn-highlight");
-    choiceButton.classList.remove("btn-highlight");
+    dropDownHeading.innerHTML = 'Select Character <i class="fa fa-angle-right "></i>';
+    dropDownHeading2.innerHTML = 'Select Character <i class="fa2 fa-angle-right2 "></i>';
     setTimeout(() => {winner.innerText = "";}, 3000);
+    choiceButton.classList.remove("btn-highlight");
 }
 
 /////////////////////////////////// DROP DOWN MENU ///////////////////////////////////////////////////////
@@ -167,35 +179,25 @@ function toggleDisplay(elem){
 	}
 }
 
-
 function toggleMenuDisplay(e){
-
-
 	const dropdown = e.currentTarget.parentNode;
 	const menu = dropdown.querySelector('.menu');
 	const icon = dropdown.querySelector('.fa-angle-right');
-
 	toggleClass(menu,'hide');
-	toggleClass(icon,'rotate-90');
-
-    
+	toggleClass(icon,'rotate-90');    
 }
 
 function handleOptionSelected(e){
 	toggleClass(e.target.parentNode, 'hide');			
-
 	const id = e.target.id;
     const selectedCharacter = e.target.innerText;
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown .title');
 	const icon = document.querySelector('.dropdown .title .fa');
-
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
-
     playerCharacter.src = `${id}.png`;
     playerVersus.innerText = selectedCharacter;
-	
 	//trigger custom event
 	document.querySelector('.dropdown .title').dispatchEvent(new Event('change'));
 	//setTimeout is used so transition is properly shown
@@ -218,13 +220,11 @@ function toggleClass2(elem,className){
 	else{
 		elem.className = elem.className.replace(/\s+/g,' ') + 	' ' + className;
 	}
-
 	return elem;
 }
 
 function toggleDisplay2(elem){
-	const curDisplayStyle = elem.style.display;	
-				
+	const curDisplayStyle = elem.style.display;				
 	if (curDisplayStyle === 'none' || curDisplayStyle === ''){
 		elem.style.display = 'block';
 	}
@@ -235,35 +235,24 @@ function toggleDisplay2(elem){
 
 
 function toggleMenuDisplay2(e){
-
-
 	const dropdown = e.currentTarget.parentNode;
 	const menu = dropdown.querySelector('.menu2');
 	const icon = dropdown.querySelector('.fa-angle-right2');
-
 	toggleClass2(menu,'hide2');
 	toggleClass2(icon,'rotate-902');
-
- 
 }
 
 function handleOptionSelected2(e){
 	toggleClass2(e.target.parentNode, 'hide2');
-		
-
 	const id = e.target.id;
     const selectedCharacter2 = e.target.innerText;
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown2 .title2');
 	const icon = document.querySelector('.dropdown2 .title2 .fa2');
-
-
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
     opponentCharacter.src = `${id}.png`;
     opponentVersus.innerText = selectedCharacter2;
-
-	
 	//trigger custom event
 	document.querySelector('.dropdown2 .title2').dispatchEvent(new Event('change'));
 	//setTimeout is used so transition is properly shown
@@ -272,5 +261,6 @@ function handleOptionSelected2(e){
 
 const dropdownTitle2 = document.querySelector('.dropdown2 .title2');
 const dropdownOptions2 = document.querySelectorAll('.dropdown2 .option2');
+
 dropdownTitle2.addEventListener('click', toggleMenuDisplay2);
 dropdownOptions2.forEach(option => option.addEventListener('click',handleOptionSelected2));

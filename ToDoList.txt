@@ -1,0 +1,4 @@
+JavaScript Rock Paper Scissors
+1. The Select Character drop down menu's don't reset with everything else. Fix it.
+2. The game sets a timeOut function when you finish and it will execute while in the second game. Fix it.
+3. Buttons won't enter a new animation if the selected button was the same button as previously selected. Fix it.
