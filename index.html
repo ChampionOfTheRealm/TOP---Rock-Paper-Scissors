@@ -13,21 +13,22 @@
         
     </div>
     <div class="the-game"></div>
-    <button class="reset-button">Reset Score</button>
+    <button class="reset-button">Reset Game</button>
         <div class="game-div">
 
+            <div id="left-side-panel">
+                <div class='dropdown'>
+	    	        <div class='title pointerCursor'>Select Character<i class="fa fa-angle-right"></i></div>
 
-            <div class='dropdown'>
-	    	    <div class='title pointerCursor'>Select Character<i class="fa fa-angle-right"></i></div>
-
-	    	    <div class='menu pointerCursor hide'>
-	    	    	<div class='option' id='man'>Man</div>
-	    	    	<div class='option' id='spanishinquisition'>The Spanish Inquisition</div>
-	    	    	<div class='option' id='beast'>Beast</div>
-	    	    	<div class='option' id='god'>God</div>
-	    	    </div>
-                <img id="player-character" src="">
-	        </div>
+	    	        <div class='menu pointerCursor hide'>
+	    	        	<div class='option' id='man'>Man</div>
+	    	        	<div class='option' id='spanishinquisition'>The Spanish Inquisition</div>
+	    	        	<div class='option' id='beast'>Black Beast of Argh</div>
+	    	        	<div class='option' id='god'>God</div>
+	    	        </div>
+	            </div>
+                <img id="player-character" src="questionmark.png">
+            </div>
 
             <div class="player-choices">
                 <text   class="leftside-text">Choose your weapon!</text>
@@ -38,44 +39,44 @@
             </div>
             <div id="game-center">
                 <div id="versus-title">
-                    <text class="versus-heading" id="player-versus"> </text>
-                    <text class="versus-heading" id="versus">Vs. </text>
-                    <text class="versus-heading" id="opponent-versus"> </text> 
+                    <text class="versus-heading" id="player-versus">?</text>
+                    <text class="versus-heading" id="versus">Vs.</text>
+                    <text class="versus-heading" id="opponent-versus">?</text> 
                 </div> 
                 <div class="results"> 
                     <div id="results-display">
-                        <div class="results-div" id="rounds"></div>
-                        <div class="results-div" id="playerSelection"></div>
-                        <div class="results-div" id="computerSelection"></div>
-                        <div class="results-div" id="result"></div>
-                        <div class="results-div" id="playerWins"></div>
-                        <div class="results-div" id="computerWins"></div>
-                        <div class="results-div" id="ties"></div>
-                        <div id="winner"></div>
+                        <div id="winner">
+                            <div class="results-div" id="result"></div>
+                        </div>
                     </div>
                 </div>
+                <div id="results-div-container">
+                    <div class="results-div" id="playerWins"></div>
+                    <div class="results-div" id="ties"></div>
+                    <div class="results-div" id="computerWins"></div>
+                </div>
             </div>
-
             <div class="computer-choices">
                 <text class="rightside-text">Choose your weapon!</text>
                 <text class="rightside-text">Computer</text>
-                <button class="rightside" id="btn1" value="rock">Rock</button>
-                <button class="rightside" id="btn2" value="paper">Paper</button>
-                <button class="rightside" id="btn3" value="scissors">Scissors</button>
+                <button class="rightside" id="compBtn1" value="rock">Rock</button>
+                <button class="rightside" id="compBtn2" value="paper">Paper</button>
+                <button class="rightside" id="compBtn3" value="scissors">Scissors</button>
             </div>
+            
+            <div id="right-side-panel">
+                <div class='dropdown2'>
+	        	    <div class='title2 pointerCursor2'>Select Character<i class="fa2 fa-angle-right2"></i></div>
 
-            <div class='dropdown2'>
-	    	    <div class='title2 pointerCursor2'>Select Character<i class="fa2 fa-angle-right2"></i></div>
-
-	    	    <div class='menu2 pointerCursor2 hide2'>
-	    	    	<div class='option2' id='man'>Man</div>
-	    	    	<div class='option2' id='spanishinquisition'>The Spanish Inquisition</div>
-	    	    	<div class='option2' id='beast'>Beast</div>
-	    	    	<div class='option2' id='god'>God</div>
-	    	    </div>
-                <img id="opponent-character" src="">
-	        </div>
-
+	        	    <div class='menu2 pointerCursor2 hide2'>
+	        	    	<div class='option2' id='man'>Man</div>
+	        	    	<div class='option2' id='spanishinquisition'>The Spanish Inquisition</div>
+	        	    	<div class='option2' id='beast'>Black Beast of Argh</div>
+	        	    	<div class='option2' id='god'>God</div>
+	        	    </div>
+	            </div>
+                <img id="opponent-character" src="questionmark.png">
+            </div>
         </div>
     <script src="main.js"></script>
 </body>

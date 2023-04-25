@@ -5,39 +5,45 @@ let computerWinCount = 0;
 let tieCount = 0;
 
 const leftsideButtons = document.querySelectorAll('.leftside');
-const roundsDiv = document.getElementById("rounds");
-const playerSelectionDiv = document.getElementById("playerSelection");
-const computerSelectionDiv = document.getElementById("computerSelection");
+
 const resultDiv = document.getElementById("result");
 const playerWinins = document.getElementById("playerWins");
 const computerWins = document.getElementById("computerWins");
 const ties = document.getElementById("ties");
 const winner = document.getElementById("winner");
 
+const opponentCharacter = document.querySelector('#opponent-character');
+const playerCharacter = document.querySelector('#player-character');
+const playerVersus = document.querySelector('#player-versus');
+const opponentVersus = document.querySelector('#opponent-versus');
+
+const compBtnRock = document.querySelector("#compBtn1");
+const compBtnPaper = document.querySelector("#compBtn2");
+const compBtnScissors = document.querySelector("#compBtn3");
+
+let choiceButton;
+
+
 leftsideButtons.forEach(option => option.addEventListener('click',game));
 document.querySelector('.reset-button').addEventListener('click', resetScore);
 
-roundsDiv.innerText = "Okay, lets play ";
-resultDiv.innerText = "Result: ";
-playerSelectionDiv.innerText = "Player selected ";
-computerSelectionDiv.innerText = "Computer selected "; 
-ties.innerText = "Ties: ";
-computerWins.innerText = "Computer Wins: ";
-playerWins.innerText = "Player Wins: ";
 
+resultDiv.innerText = "";
+ties.innerText = "Ties: " + 0;
+computerWins.innerText = "Computer Wins: " + 0;
+playerWins.innerText = "Player Wins: " + 0;
 
 //Asks the player how many rounds for Rock Paper Scissors they would like to play and proceeds to call the game logic said number of times.
 function game(e) {
+    if (choiceButton) {
+        choiceButton.classList.remove("btn-highlight");
+    }
     let playerChoice = e.target.value;
+    choiceButton = e.target;
+    choiceButton.classList.add("btn-highlight");
 
     //how many rounds to play?
     let rounds = 1;
-    //rounds = parseInt(rounds);
-    //if (rounds >= 1 && typeof(rounds) === "number") {
-    //    roundsDiv.innerText = "Okay, lets play " + rounds + " rounds together. Start!";
-    //} else {
-    //    roundsDiv.innerText ="Game cancelled. See ya!";
-    //}
     for (i = 1; i <= rounds; i++) {
         playGame();
     }
@@ -45,14 +51,22 @@ function game(e) {
     //Generates a random choice from "rock, paper or scissors" for the computer
     function getComputerChoice() {
         let random = Math.floor(Math.random() * 100);
-        if (random <= 33 && random >= 0) {
-            return "rock";
-        } else if (random <= 66 && random >= 34) {
-            return "paper";
-        } else if (random <= 100 && random >= 67) {
-            return "scissors";
-        }
+        compBtnRock.classList.remove("btn-highlight");
+        compBtnPaper.classList.remove("btn-highlight");
+        compBtnScissors.classList.remove("btn-highlight");
+
+            if (random <= 33 && random >= 0) {
+                compBtnRock.classList.add("btn-highlight");
+                return "rock";
+            } else if (random <= 66 && random >= 34) {
+                compBtnPaper.classList.add("btn-highlight");
+                return "paper";
+            } else if (random <= 100 && random >= 67) {
+                compBtnScissors.classList.add("btn-highlight");
+                return "scissors";
+            }
     }
+       
 
     //Game logic which compares the computers choice with the players choice and determines if the player or computer won or a tie and increments respective variable.
     function playGame(playerSelection, computerSelection) {
@@ -91,9 +105,7 @@ function game(e) {
             }
         }
 
-        resultDiv.innerText = "Result: " + result;
-        playerSelectionDiv.innerText = "Player selected " + playerChoice;
-        computerSelectionDiv.innerText = "Computer selected " + computerSelection; 
+        resultDiv.innerText = result;
         ties.innerText = "Ties: " + tieCount;
         computerWins.innerText = "Computer Wins: " + computerWinCount;
         playerWins.innerText = "Player Wins: " + playerWinCount;
@@ -103,30 +115,61 @@ function game(e) {
             computerWinCount = 0;
             playerWinCount = 0;
             tieCount = 0;
+            setTimeout (() => {
+                winner.innerText = "";
+                resultDiv.innerText = "";
+
+
+                //ties.innerText = "Ties: ";
+                //computerWins.innerText = "Computer Wins: ";
+                //playerWins.innerText = "Player Wins: ";
+                //computerWinCount = 0;
+                //playerWinCount = 0;
+                //tieCount = 0;
+            }, 5000);
         } else if (playerWinCount == 5){
             winner.innerText = "We have a winner! \n The Player wins with 5 points! \n Congratulations!";
             computerWinCount = 0;
             playerWinCount = 0;
             tieCount = 0;
+            setTimeout (() => {
+                winner.innerText = "";
+                resultDiv.innerText = "";
+
+
+                //ties.innerText = "Ties: ";
+                //computerWins.innerText = "Computer Wins: ";
+                //playerWins.innerText = "Player Wins: ";
+                //computerWinCount = 0;
+                //playerWinCount = 0;
+                //tieCount = 0;
+            }, 5000);
         }
 
-        return;
+        return choiceButton;
     }
     
 }
 
 function resetScore() {
-    resultDiv.innerText = "Result: ";
-    playerSelectionDiv.innerText = "Player selected ";
-    computerSelectionDiv.innerText = "Computer selected "; 
+    resultDiv.innerText = "";
     ties.innerText = "Ties: ";
     computerWins.innerText = "Computer Wins: ";
     playerWins.innerText = "Player Wins: ";
     computerWinCount = 0;
     playerWinCount = 0;
     tieCount = 0;
+    opponentCharacter.src = "questionmark.png";
+    playerCharacter.src = "questionmark.png";
+    //playerVersus.innerText = "?";
+    //opponentVersus.innerText = "?";
+    winner.innerText = "Game Reset!";
+    compBtnRock.classList.remove("btn-highlight");
+    compBtnPaper.classList.remove("btn-highlight");
+    compBtnScissors.classList.remove("btn-highlight");
+    choiceButton.classList.remove("btn-highlight");
+    setTimeout(() => {winner.innerText = "";}, 3000);
 }
-
 
 /////////////////////////////////// DROP DOWN MENU ///////////////////////////////////////////////////////
 function toggleClass(elem,className){
@@ -173,8 +216,6 @@ function handleOptionSelected(e){
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown .title');
 	const icon = document.querySelector('.dropdown .title .fa');
-    const playerCharacter = document.querySelector('#player-character');
-    const playerVersus = document.querySelector('#player-versus');
 
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
@@ -188,12 +229,6 @@ function handleOptionSelected(e){
 	setTimeout(() => toggleClass(icon,'rotate-90',0));
 }
 
-//function handleTitleChange(e){
-//	const result = document.getElementById('result');
-//
-//	result.innerHTML = 'The result is: ' + e.target.textContent;
-//}
-
 //get elements
 const dropdownTitle = document.querySelector('.dropdown .title');
 const dropdownOptions = document.querySelectorAll('.dropdown .option');
@@ -201,11 +236,6 @@ const dropdownOptions = document.querySelectorAll('.dropdown .option');
 //bind listeners to these elements
 dropdownTitle.addEventListener('click', toggleMenuDisplay);
 dropdownOptions.forEach(option => option.addEventListener('click',handleOptionSelected));
-
-
-//document.querySelector('.dropdown .title').addEventListener('change',handleTitleChange);
-
-//////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////// DROP DOWN MENU 2///////////////////////////////////////////////////////
 function toggleClass2(elem,className){
@@ -253,13 +283,11 @@ function handleOptionSelected2(e){
 	const newValue = e.target.textContent + ' ';
 	const titleElem = document.querySelector('.dropdown2 .title2');
 	const icon = document.querySelector('.dropdown2 .title2 .fa2');
-    const opponentCharacter = document.querySelector('#opponent-character');
-    const opponentVersus = document.querySelector('#opponent-versus');
 
 
 	titleElem.textContent = newValue;
 	titleElem.appendChild(icon);
-    id.too
+    console.log(icon);
     opponentCharacter.src = `${id}.png`;
     opponentVersus.innerText = selectedCharacter2;
 

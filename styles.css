@@ -45,9 +45,17 @@ body {
     width: 175px;
     margin-top: 20px;
     margin-right: 20px;
-    font-size: large;
+    font-size: 28px;
     font-weight: 700;
     font-family:monospace;
+    border-radius: 30px;
+}
+
+.leftside:hover {
+    color: blue;
+    background-color: rgb(253, 253, 156);
+    border-color: blue;
+    
 }
 
 .computer-choices {
@@ -62,10 +70,38 @@ body {
     width: 175px;
     margin-top: 20px;
     margin-left: 20px;
-    font-size: large;
+    font-size: 28px;
     font-weight: 700;
     font-family:monospace;
+    border-radius: 30px;
 }
+
+.rightside:hover{
+    pointer-events: none;
+}
+
+.btn-highlight {
+    background-color: rgb(253, 253, 156);
+    border: solid;
+    border-radius: 30px;
+    border-color: yellow;
+    -webkit-animation-name: cssAnimation;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes cssAnimation {
+    from {
+      -webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
+    }
+    to {
+      -webkit-transform: rotate(0deg) scale(1.2) skew(0deg) translate(0px);
+    }
+  }
+
 
 .leftside-text, .rightside-text {
 
@@ -78,6 +114,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin: 20px 0 20px 0;
 }
 
 .results {
@@ -91,28 +129,34 @@ body {
 
 #versus-title {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
-    width: 630px;
+    width: 650px;
     height: 135px;
-    border: solid;
-    border-color: white;
-    border-radius: 30px;
-
 }
 
 .versus-heading {
     display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 700;
     font-size: 32px;
+    width: 250px;
     padding: 20px;
-
 }
+
 
 #results-display {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+#results-div-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 650px;
 }
 
 .results-div {
@@ -135,6 +179,21 @@ body {
     width: 550px;
 }
 
+#left-side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: start;
+}
+
+#right-side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: end;
+
+}
+
 #player-character, #opponent-character {
     display: flex;
     flex-shrink: auto;
@@ -143,6 +202,7 @@ body {
     border-radius: 30px;
     height: 375px;
     width: 200px;
+    margin: 0 20px 20px 20px;
 }
 
 #player-character {
@@ -164,11 +224,14 @@ body {
 	width: 10em;
 	margin-bottom: 1em;
     width: fit-content;
+    margin-left: 20px;
 }
 
 .dropdown .title{
+    display: flex;
+    justify-content: center;
 	margin: .3em .3em .3em .3em;	
-    width: fit-content;
+    width: 190px;
     border: solid;
     border-radius: 30px;
     border-color: blue;
@@ -215,11 +278,14 @@ body {
 	width: 10em;
 	margin-bottom: 1em;
     width: fit-content;
+    margin-right: 20px;
 }
 
 .dropdown2 .title2{
+    display: flex;
+    justify-content: center;
 	margin: .3em .3em .3em .3em;	
-    width: fit-content;
+    width: 190px;
     border: solid;
     border-radius: 30px;
     border-color: red;
